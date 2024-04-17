@@ -2,6 +2,13 @@ import csv
 
 grocery_list = []
 
+def Print():
+    n = 1
+    print("Your grocery list:")
+    for item in grocery_list:
+        print(f"{n}) {item}")
+        n += 1
+
 def List():
     print("Enter your grocery list.\nEnter Done when you've finished adding items.")
     add_to_list = True
@@ -12,19 +19,17 @@ def List():
             add_to_list = False
         else:
             Locate(item)
-
-    print("Your grocery list:")
-    for item in grocery_list:
-        print(item)
+    Print()
 
 def Remove(grocery_list):
-    print("What item do you want to remove?")
-    item_to_remove = input().lower()
-    if item_to_remove in grocery_list:
-        grocery_list.remove(item_to_remove)
-        print(f"{item_to_remove.capitalize()} removed from the list.")
+    Print()
+    item_to_remove = int(input("What item do you want to remove?")) - 1
+    if item_to_remove < len(grocery_list):
+        grocery_list.pop(item_to_remove)
+        print("Item removed from the list.")
     else:
         print("Item not found in the list.")
+    Print()
 
 def Locate(item):
     search = []
